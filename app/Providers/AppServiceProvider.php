@@ -12,7 +12,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        View::share('names','Abeer Azad');
+        View::share('name','Abeer Azad');
     }
 
 

@@ -59,13 +59,9 @@
                                     <a href="/profile/{{ Auth::user()->username }}"> My profile</a>
 
                                 </li>
-                                <li>
-                                        <a href="/profile/{{ Auth::user()->username }}/create">Create Profile</a>
-
-                                 </li>
                                 <hr>
                                 <li>
-                                    <a href="/articles/create">Create</a>
+                                    <a href="/articles/create">Create Articles</a>
 
                                 </li>
                                 <li>

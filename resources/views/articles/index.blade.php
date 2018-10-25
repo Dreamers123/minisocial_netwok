@@ -8,7 +8,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading"> 
                 
-                <span>{{ $article->user->name }}, Edited by {{ $names }}</span>
+                <span>{{ $article->user->name }}, Edited by {{ $name }}</span>
                 <span class="pull-right">{{ $article->created_at->diffForHumans() }}</span>
 
                 </div>
