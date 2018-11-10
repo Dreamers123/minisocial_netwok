@@ -16,9 +16,10 @@
                 <div class="panel-body">
                 {{ $article->shortContent }}
                  <a href="/articles/{{ $article->id }}">read more</a>
+                    @if(Auth::check())
                  <span class="pull-right"><a href="/articles/{{ $article->id }}/edit"> Edit
                  </a></span>
-
+                   @endif
                  @if($article->user_id==Auth::id())
                  <form action="/articles/{{ $article->id }}" method="POST">
 

@@ -11,7 +11,7 @@ class EditorMiddleware
     public function handle($request, Closure $next)
     {
         foreach (Auth::user()->role as $role) {
-            if ($role->name == 'Editor') {
+            if ($role->name == 'editor') {
                 return $next($request);
             }
         }

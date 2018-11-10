@@ -9,16 +9,7 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
+
 
     use AuthenticatesUsers;
 
@@ -36,16 +27,13 @@ class LoginController extends Controller
         $this->clearLoginAttempts($request);
 
         foreach ($this->guard()->user()->role as $role) {
-            if ($role->name == 'Admin') {
+            if ($role->name == 'admin') {
                 return redirect('admin/home');
-            }elseif ($role->name == 'Editor') {
+            }elseif ($role->name == 'editor') {
                 return redirect('admin/editor');
             }
         }
     }
-
-
-
 
     public function showLoginForm()
     {

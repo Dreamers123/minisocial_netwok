@@ -50,6 +50,8 @@ Route::get('/dynamic/{id}/{name}', function ($id,$name)
 
 Route::redirect('/here', '/there', 301);
 Route::resource('articles','ArticlesController');
+Route::resource('movies','MoviesController');
+Route::post('/articles/{article}/comments', 'CommentsController@store');
 Route::get('/try',  'ArticlesController@tryit');
 Auth::routes();
 

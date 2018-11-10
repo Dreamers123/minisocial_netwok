@@ -17,7 +17,7 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
         foreach (Auth::user()->role as $role) {
-            if ($role->name == 'Admin') {
+            if ($role->name == 'admin') {
                 return $next($request);
             }
         }
