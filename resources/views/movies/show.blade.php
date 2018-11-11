@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <span>Created By Abeer Azad</span>
+                    <span>{{ $fav_movies->name }}</span>
                     <span class="pull-right">{{ $fav_movies->created_at->diffForHumans() }}</span>
                 </div>
 

@@ -5,6 +5,7 @@ use App\Article;
 use Auth;
 use Illuminate\Http\Request;
 use View;
+use Illuminate\Support\Facades\Input;
 class ArticlesController extends Controller
 {
     
@@ -82,6 +83,20 @@ class ArticlesController extends Controller
         $articles=Article::where('user_id','=',9)->get();
 
         return $articles;
+    }
+    public function search()
+    {
+        $q = Input::get( 'q' );
+        if($q != ""){
+            $article = Article::where ( 'content', 'LIKE', '%' . $q . '%' )->paginate (5)->setPath ( '' );
+            $pagination = $article->appends ( array (
+                'q' => Input::get ( 'q' )
+            ) );
+            if (count ( $article ) > 0)
+                return  view ( 'articles.search' )->withDetails ( $article )->withQuery ( $q );
+        }
+
+        return view ( 'articles.search' )->withMessage ( 'No Details found. Try to search again !' );
     }
 
 }

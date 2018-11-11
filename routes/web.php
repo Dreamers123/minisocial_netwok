@@ -1,5 +1,10 @@
 <?php
 
+
+use Illuminate\Support\Facades\Input;
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -50,9 +55,21 @@ Route::get('/dynamic/{id}/{name}', function ($id,$name)
 
 Route::redirect('/here', '/there', 301);
 Route::resource('articles','ArticlesController');
+Route::any('article_search','ArticlesController@search');
+Route::any('movie_search','MoviesController@search');
+
 Route::resource('movies','MoviesController');
 Route::post('/articles/{article}/comments', 'CommentsController@store');
 Route::get('/try',  'ArticlesController@tryit');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::delete('user/{id}','AdminController@delete');
+Route::delete('movie/{id}','AdminController@deletemovie');
+Route::delete('article/{id}','AdminController@deletearticle');
+
+Route::get('admin/users','AdminController@showusers');
+Route::get('admin/movies','AdminController@showmovies');
+Route::get('admin/articles','AdminController@showarticles');
+
+

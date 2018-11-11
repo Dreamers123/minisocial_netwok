@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Fav_movie;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Input;
 class MoviesController extends Controller
 {
 
@@ -66,5 +67,19 @@ class MoviesController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function search()
+    {
+        $q = Input::get( 'q' );
+        if($q != ""){
+            $movies = Fav_movie::where ( 'name', 'LIKE', '%' . $q . '%' )->paginate (1)->setPath ( '' );
+            $pagination = $movies->appends ( array (
+                'q' => Input::get ( 'q' )
+            ) );
+            if (count ( $movies ) > 0)
+                return  view ( 'movies.search' )->withDetails ( $movies )->withQuery ( $q );
+        }
+
+        return view ( 'movies.search' )->withMessage ( 'No Details found. Try to search again !' );
     }
 }

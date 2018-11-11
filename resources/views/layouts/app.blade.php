@@ -55,7 +55,7 @@
                                 <a href="/articles">Articles Feed</a>
                             </li>
                             <li>
-                                <a href="/movies">Movie Feed</a>
+                                <a href="/movies">Movies Feed</a>
                             </li>
                             <li>
                         @endif

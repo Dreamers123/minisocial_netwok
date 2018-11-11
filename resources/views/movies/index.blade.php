@@ -3,6 +3,19 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="col-md-8 col-md-offset-2" style="margin-bottom: 3%">
+        <form action="/movie_search" method="POST" role="search">
+            {{ csrf_field() }}
+            <div class="input-group">
+                <input type="text" class="form-control" name="q"
+                       placeholder="Search Movies"> <span class="input-group-btn">
+					<button type="submit" class="btn btn-default">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+				</span>
+            </div>
+        </form>
+    </div>
     @forelse($fav_movies as $fav_movie)
         <div class="container">
             <div class="row">

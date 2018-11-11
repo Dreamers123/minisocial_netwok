@@ -2,6 +2,20 @@
 
 @section('content')
     <body style="background-image: url('http://atgbcentral.com/data/out/32/4174767-beautiful-background-images.jpg')">
+
+        <div class="col-md-8 col-md-offset-2" style="margin-bottom: 3%">
+            <form action="/article_search" method="POST" role="search">
+                {{ csrf_field() }}
+                <div class="input-group">
+                    <input type="text" class="form-control" name="q"
+                           placeholder="Search Articles"> <span class="input-group-btn">
+					<button type="submit" class="btn btn-default">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+				</span>
+                </div>
+            </form>
+        </div>
      <div class="row">
         @forelse($articles as $article)
         <div class="col-md-8 col-md-offset-2">
@@ -16,7 +30,7 @@
                 <div class="panel-body">
                 {{ $article->shortContent }}
                  <a href="/articles/{{ $article->id }}">read more</a>
-                    @if(Auth::check())
+                    @if($article->user_id==Auth::id())
                  <span class="pull-right"><a href="/articles/{{ $article->id }}/edit"> Edit
                  </a></span>
                    @endif
