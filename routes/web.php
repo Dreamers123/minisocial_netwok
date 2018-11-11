@@ -71,5 +71,10 @@ Route::delete('article/{id}','AdminController@deletearticle');
 Route::get('admin/users','AdminController@showusers');
 Route::get('admin/movies','AdminController@showmovies');
 Route::get('admin/articles','AdminController@showarticles');
+Route::get('editor/articles','EditorController@showarticles');
+Route::any('editor/article/{id}/edit','EditorController@edit');
+Route::put('editor/article/{id}','EditorController@update');
+
+
 
 
